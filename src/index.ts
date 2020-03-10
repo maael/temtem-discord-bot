@@ -1,6 +1,9 @@
 import * as Discord from "discord.js";
 
-const { DISCORD_TOKEN, PORT } = process.env;
+const { DISCORD_TOKEN, PORT, DEFAULT_PREFIX } = process.env as Record<
+  string,
+  string
+>;
 
 if (!DISCORD_TOKEN) {
   console.error("[error]", "Missing DISCORD_TOKEN");
@@ -18,7 +21,18 @@ client.on("ready", () => {
 });
 
 client.on("message", async msg => {
-  console.info("incoming_message", msg.content);
+  const content = msg.content || "";
+  if (
+    !content.startsWith(DEFAULT_PREFIX) ||
+    (msg.author && msg.author.bot) ||
+    !msg.channel
+  )
+    return;
+
+  const args = content.slice(DEFAULT_PREFIX.length).split(/ +/);
+  const command = (args.shift() || "").toLowerCase();
+  console.info("incoming_message", command, args);
+  msg.channel.send(`Command name: ${command}\nArguments: ${args}`);
 });
 
 (async () => {
