@@ -1,0 +1,18 @@
+type Server {
+  name: String!
+}
+
+type User {
+  name: String!
+  identifier: String!
+  servers: [ID!]!
+}
+
+type Settings {
+  user: ID!
+}
+
+type TempediaEntry {
+  user: ID!
+  temtem: String!
+}
