@@ -14,4 +14,4 @@ if (!DISCORD_TOKEN) {
   const client = setupClient(commands);
   await client.login(DISCORD_TOKEN);
   http.createServer().listen(PORT);
-})();
+})().catch(e => console.error(e));

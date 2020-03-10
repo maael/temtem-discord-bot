@@ -10,7 +10,7 @@ export default function setupClient(commands: Record<string, Command>) {
 
   client.on("ready", () => {
     if (client.user) {
-      console.log(`Logged in as ${client.user.tag}!`);
+      console.info(`Logged in as ${client.user.tag}!`);
     } else {
       console.error("[error]", "Could not login");
     }
@@ -32,7 +32,7 @@ export default function setupClient(commands: Record<string, Command>) {
       commands[command](args, msg);
     } else {
       console.info("missing_command", command);
-      msg.channel.send(`missing command: ${command}`);
+      await msg.channel.send(`missing command: ${command}`);
     }
   });
 
