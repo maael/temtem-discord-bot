@@ -13,5 +13,9 @@ if (!DISCORD_TOKEN) {
   const commands = await getCommands();
   const client = setupClient(commands);
   await client.login(DISCORD_TOKEN);
-  http.createServer().listen(PORT);
+  http
+    .createServer((_req, res) => {
+      res.end("Temtem Discord Bot");
+    })
+    .listen(PORT);
 })().catch(e => console.error(e));
