@@ -9,13 +9,14 @@ if (!DISCORD_TOKEN) {
   process.exit(1);
 }
 
+http
+  .createServer((_req, res) => {
+    res.end("Temtem Discord Bot");
+  })
+  .listen(PORT);
+
 (async () => {
   const commands = await getCommands();
   const client = setupClient(commands);
   await client.login(DISCORD_TOKEN);
-  http
-    .createServer((_req, res) => {
-      res.end("Temtem Discord Bot");
-    })
-    .listen(PORT);
 })().catch(e => console.error(e));
