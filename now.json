@@ -1,5 +1,5 @@
 {
-  "version": 2,
+  "version": 1,
   "build": {
     "env": {
       "DISCORD_TOKEN": "@temtem-discord-bot-discord-token"
