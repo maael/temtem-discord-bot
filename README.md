@@ -1,5 +1,7 @@
 # Temtem Discord Bot
 
+Click [here](https://discordapp.com/oauth2/authorize?client_id=686857519100199006&scope=bot&permissions=2048) to invite the bot to your server.
+
 ## Initial Setup
 
 ### Clone
